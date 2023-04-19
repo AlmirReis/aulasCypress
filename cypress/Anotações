@@ -1,0 +1,76 @@
+/// Versão rodando
+
+
+describe ('Teste referente a tela de Cadastro',()=>{
+    it('Teste Válido Cadastro com dados válidos',()=>{
+        cy.visit('https://jgsl-systemcalling.netlify.app/')
+        
+        cy.get('.buttonLinkHomeRegister').click()
+    
+        cy.get('[placeholder="Nome"]').type('Fulano de tal')
+        cy.get('[placeholder="Telefone"]').type('859998765')
+        cy.get('[placeholder="Email"]').type('beltrano621@gmail.com')
+        cy.get('[type="password"]').type('seila123')
+    
+        cy.get('.buttonRegister').click()
+        cy.get('[href="/profile"] > li').click()
+        cy.wait(6000)
+        cy.get('[disabled=""]').invoke('val')
+        .should('eq','beltrano621@gmail.com')
+    
+        });
+    });
+
+    ///   Modificado por essa versão, retirando :
+   ///    cy.wait(6000)
+  ///     cy.get('[disabled=""]').invoke('val')
+  ///    .should('eq','beltrano621@gmail.com')
+
+
+  ///Obs. Rodando. Foi acrescido o comando 
+  ///chromeWebSecurity: false no cypress.config.js
+
+    describe ('Teste referente a tela de Cadastro',()=>{
+        it('Teste Válido Cadastro com dados válidos',()=>{
+            cy.visit('https://jgsl-systemcalling.netlify.app/')
+            
+            cy.get('.buttonLinkHomeRegister').click()
+        
+            cy.get('[placeholder="Nome"]').type('Fulano de tal')
+            cy.get('[placeholder="Telefone"]').type('859998765')
+            cy.get('[placeholder="Email"]').type('beltrano721@gmail.com')
+            cy.get('[type="password"]').type('seila123')
+        
+            cy.get('.buttonRegister').click()
+            cy.get('[href="/profile"] > li').click()
+            
+            });
+        });
+
+
+        /// Anotação Aula 2
+
+
+        describe('testes na tela de cadastro',()=>{
+
+    it('', () => {
+
+        cy.visit("https://jgsl-systemcalling.netlify.app") 
+
+        cy.get('.buttonLinkHomeRegister').click()
+
+        cy.get('[placeholder="Nome"]').type(nome)
+        cy.get('[placeholder="Telefone"]').type(telefone)
+        cy.get('[placeholder="Email"]').type(email)
+        cy.get('[type="password"]').type('seila123')
+    
+        cy.get('.buttonRegister').click()
+        cy.wait(5000)
+        cy.get('[href="/profile"] > li').click()
+        cy.get('[disabled=""]')
+             .invoke('val')
+                       .should('exist', email)
+        
+    });
+   
+});
